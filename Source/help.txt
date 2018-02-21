@@ -1,0 +1,28 @@
+SeaShell
+
+Another chance to waste time.
+First you define the cross section of the shell; imagine designing the die for a pasta extruder.
+Next you define the shape of the shell.
+Finally you can alter various properties of the shell.
+
+A.  Button controls
+    Shape Smooth.  Smooth out the bend angles of the shell.
+    Size Smooth.   Smooth out the general shape of the shell.
+    Change Skin.   Select the coloring of the shell.
+    Scroll Skin.   Toggle whether the coloring is changing.
+
+B.  Shell property controls
+    Size +/-    Alter the overall size of the shell.
+    Thick +/-   Alter the thickness of the cross-section.
+    Z +/-       Stretch the shell shape.
+    Twist +/-   Twist the shell shape.
+
+C.  Cross-section drawing area
+    Slide your finger to draw the shape of the pasta extrusion die.
+
+D.  Shell shape drawing area
+    Slide your finger to draw the shape of shell.
+    Varying the speed of your movement affects the width of the shell.
+
+Pinch the viewing windows to control zoom, slide 1 finger to rotate, 2 fingers to translate, tap to stop rotation.
+

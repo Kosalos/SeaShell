@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="ipad12_9" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="SeaShell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ve7-aF-loD"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Dy-TN-HU4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="Background" customModule="SeaShell" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMa-yR-rio">
+                                <rect key="frame" x="70" y="814" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Change Skin">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeSkinButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cJp-rA-CPu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuL-K1-SYc">
+                                <rect key="frame" x="70" y="743" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Shape Smooth">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="uKk-Fe-C6b"/>
+                                    <action selector="shapeSmoothButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="NOP-w8-B3k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R63-NC-h45">
+                                <rect key="frame" x="70" y="778" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Size Smooth">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cUM-b9-xQt"/>
+                                    <action selector="sizeSmoothButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="lL5-v2-x9K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twQ-Jw-axv">
+                                <rect key="frame" x="70" y="852" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Scroll Skin">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="scrollSkinButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="x5m-iH-6hK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXP-WT-Q0Z">
+                                <rect key="frame" x="543" y="970" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DmP-PU-S1P" kind="popover" popoverAnchorView="FXP-WT-Q0Z" id="nk9-ui-BxZ">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-Zb-NAe" customClass="CrossSectionView" customModule="SeaShell">
+                                <rect key="frame" x="606" y="694" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-dY-dL6" userLabel="MTKViewL" customClass="MTKView">
+                                <rect key="frame" x="11" y="8" width="573" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8Nl-s8-kgc" appends="YES" id="hJg-jM-Kii"/>
+                                    <outletCollection property="gestureRecognizers" destination="aPR-ep-zbT" appends="YES" id="wRM-iw-TWz"/>
+                                    <outletCollection property="gestureRecognizers" destination="RRe-gX-6LS" appends="YES" id="b9R-Cr-1uH"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMD-jd-egU" customClass="SliceView" customModule="SeaShell" customModuleProvider="target">
+                                <rect key="frame" x="921" y="695" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-A4-3As">
+                                <rect key="frame" x="532" y="915" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stereo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stereoButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gkn-e8-5TQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2G-rG-dC3">
+                                <rect key="frame" x="267" y="727" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Size-">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7mL-Fz-2HQ"/>
+                                    <action selector="szMButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="6Tb-eW-DDW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhh-DB-ULP">
+                                <rect key="frame" x="357" y="727" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Size+">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="qCU-lm-QCo"/>
+                                    <action selector="szPButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="d9a-EQ-swA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DN2-oS-P5D">
+                                <rect key="frame" x="267" y="772" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Thick-">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xdP-ID-6uL"/>
+                                    <action selector="thMButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="wcc-zF-AlX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfR-rf-99S">
+                                <rect key="frame" x="357" y="772" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Thick+">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="G3H-sF-I6i"/>
+                                    <action selector="thPButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="9dT-CU-pNG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqf-JJ-rGO">
+                                <rect key="frame" x="267" y="823" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Z-">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cl3-H7-UTA"/>
+                                    <action selector="zzMButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="f9v-Za-4X7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPP-yW-zPG">
+                                <rect key="frame" x="357" y="823" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Z+">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="D6t-GI-y5l"/>
+                                    <action selector="zzPButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="QJl-Ct-tCz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbA-wy-boC">
+                                <rect key="frame" x="267" y="874" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Twist-">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="p4B-vb-sW6"/>
+                                    <action selector="twMButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="E77-gx-flK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgS-hg-51W">
+                                <rect key="frame" x="357" y="874" width="82" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Twist+">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="tuv-mO-93N"/>
+                                    <action selector="twPButtonPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="5yF-hR-2FS"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KSd-TD-Tud">
+                                <rect key="frame" x="275" y="945" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="alphaChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="XGO-dp-l0R"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alpha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGK-kF-VJy">
+                                <rect key="frame" x="214" y="949" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g30-ls-F4D" userLabel="MTKViewR" customClass="MTKView">
+                                <rect key="frame" x="606" y="8" width="605" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="keC-yg-GC7" appends="YES" id="VRe-LA-5il"/>
+                                    <outletCollection property="gestureRecognizers" destination="Saa-ux-Asv" appends="YES" id="McU-Mb-cck"/>
+                                    <outletCollection property="gestureRecognizers" destination="a9P-CS-IVW" appends="YES" id="NH5-Pb-eC0"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <connections>
+                        <outlet property="alphaLegend" destination="tGK-kF-VJy" id="TYV-Eo-Z3u"/>
+                        <outlet property="alphaSlider" destination="KSd-TD-Tud" id="bZ0-GD-CL5"/>
+                        <outlet property="changeSkinButton" destination="GMa-yR-rio" id="URF-pV-TeD"/>
+                        <outlet property="crossSectionView" destination="a2y-Zb-NAe" id="cSt-7d-fgm"/>
+                        <outlet property="helpButton" destination="FXP-WT-Q0Z" id="4Xc-rd-wbm"/>
+                        <outlet property="metalViewL" destination="6PB-dY-dL6" id="jJh-cX-kiR"/>
+                        <outlet property="metalViewR" destination="g30-ls-F4D" id="Cwr-XQ-w83"/>
+                        <outlet property="scrollSkinButton" destination="twQ-Jw-axv" id="Sf5-25-G7g"/>
+                        <outlet property="shapeSmoothButton" destination="AuL-K1-SYc" id="Trn-HK-jsL"/>
+                        <outlet property="sizeSmoothButton" destination="R63-NC-h45" id="pvK-T8-NuI"/>
+                        <outlet property="sliceView" destination="iMD-jd-egU" id="4uN-g3-rJB"/>
+                        <outlet property="stereoButton" destination="A8E-A4-3As" id="8zb-Ef-58s"/>
+                        <outlet property="szMButton" destination="R2G-rG-dC3" id="B2i-0E-Phg"/>
+                        <outlet property="szPButton" destination="rhh-DB-ULP" id="DTh-dx-Lft"/>
+                        <outlet property="thMButton" destination="DN2-oS-P5D" id="2hq-Xi-d3h"/>
+                        <outlet property="thPButton" destination="JfR-rf-99S" id="0gq-MG-ZEZ"/>
+                        <outlet property="twMButton" destination="kbA-wy-boC" id="18L-Nd-wR1"/>
+                        <outlet property="twPButton" destination="zgS-hg-51W" id="59I-Ya-SAI"/>
+                        <outlet property="zzMButton" destination="Gqf-JJ-rGO" id="v0R-OI-rbi"/>
+                        <outlet property="zzPButton" destination="IPP-yW-zPG" id="3S1-Jc-6TZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="8Nl-s8-kgc">
+                    <connections>
+                        <action selector="panGesture:" destination="BV1-FR-VrT" id="p1v-wB-KMM"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="keC-yg-GC7">
+                    <connections>
+                        <action selector="panGesture:" destination="BV1-FR-VrT" id="c2q-vh-Kkq"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="Saa-ux-Asv">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="4UJ-Aw-rL5"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <pinchGestureRecognizer id="aPR-ep-zbT">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="aSM-qj-fvs"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <tapGestureRecognizer id="RRe-gX-6LS">
+                    <connections>
+                        <action selector="tapGesture:" destination="BV1-FR-VrT" id="Kym-Im-KZp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="a9P-CS-IVW">
+                    <connections>
+                        <action selector="tapGesture:" destination="BV1-FR-VrT" id="CJY-1n-zfF"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-7754" y="-3328"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="Ebo-vr-ivu">
+            <objects>
+                <viewController id="DmP-PU-S1P" customClass="HelpViewController" customModule="SeaShell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4oy-Up-mt0"/>
+                        <viewControllerLayoutGuide type="bottom" id="2CL-fs-gkq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="left" id="6xI-vQ-8rU">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-fp-9Ny">
+                                <rect key="frame" x="35" y="24" width="562" height="182"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="182" id="89K-BJ-AvQ"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8Z-Ux-P4R">
+                                <rect key="frame" x="20" y="219" width="599" height="361"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" staticText="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="a8Z-Ux-P4R" firstAttribute="leading" secondItem="6xI-vQ-8rU" secondAttribute="leadingMargin" id="0Ro-De-WsP"/>
+                            <constraint firstAttribute="bottom" secondItem="a8Z-Ux-P4R" secondAttribute="bottom" constant="20" symbolic="YES" id="3lv-iK-SZJ"/>
+                            <constraint firstItem="a8Z-Ux-P4R" firstAttribute="top" secondItem="C3Q-fp-9Ny" secondAttribute="bottom" constant="13" id="7Hw-O1-kpi"/>
+                            <constraint firstItem="a8Z-Ux-P4R" firstAttribute="centerX" secondItem="6xI-vQ-8rU" secondAttribute="centerX" id="KR9-Rb-0gE"/>
+                            <constraint firstItem="C3Q-fp-9Ny" firstAttribute="top" secondItem="4oy-Up-mt0" secondAttribute="bottom" constant="4" id="bH9-K7-jlR"/>
+                            <constraint firstItem="C3Q-fp-9Ny" firstAttribute="leading" secondItem="6xI-vQ-8rU" secondAttribute="leadingMargin" constant="15" id="j3E-uW-EJK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C3Q-fp-9Ny" secondAttribute="trailing" constant="23" id="jFb-Ax-g2r"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="640" height="600"/>
+                    <size key="freeformSize" width="640" height="600"/>
+                    <connections>
+                        <outlet property="textView" destination="a8Z-Ux-P4R" id="yjT-Yu-3do"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uAD-4z-cQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6752" y="-4115"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="help" width="1541" height="466"/>
+    </resources>
+</document>
