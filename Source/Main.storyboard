@@ -106,9 +106,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-A4-3As">
-                                <rect key="frame" x="532" y="915" width="45" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-A4-3As">
+                                <rect key="frame" x="514" y="915" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Stereo">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -246,6 +247,20 @@
                                     <outletCollection property="gestureRecognizers" destination="a9P-CS-IVW" appends="YES" id="NH5-Pb-eC0"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-Pg-Het">
+                                <rect key="frame" x="520" y="857" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="T">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9er-kU-gl8" kind="popover" popoverAnchorView="0Hb-Pg-Het" id="RwT-77-M51">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -267,6 +282,7 @@
                         <outlet property="szPButton" destination="rhh-DB-ULP" id="DTh-dx-Lft"/>
                         <outlet property="thMButton" destination="DN2-oS-P5D" id="2hq-Xi-d3h"/>
                         <outlet property="thPButton" destination="JfR-rf-99S" id="0gq-MG-ZEZ"/>
+                        <outlet property="thicknessButton" destination="0Hb-Pg-Het" id="FGn-i6-PE2"/>
                         <outlet property="twMButton" destination="kbA-wy-boC" id="18L-Nd-wR1"/>
                         <outlet property="twPButton" destination="zgS-hg-51W" id="59I-Ya-SAI"/>
                         <outlet property="zzMButton" destination="Gqf-JJ-rGO" id="v0R-OI-rbi"/>
@@ -355,6 +371,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAD-4z-cQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6752" y="-4115"/>
+        </scene>
+        <!--ThicknessPopOver-->
+        <scene sceneID="BqP-Rm-R4b">
+            <objects>
+                <viewController id="9er-kU-gl8" userLabel="ThicknessPopOver" customClass="ThicknessViewController" customModule="SeaShell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2KL-fc-sdo"/>
+                        <viewControllerLayoutGuide type="bottom" id="RFE-Tg-W4d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="daX-sB-M67" userLabel="background">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-Wq-FJt" customClass="ThicknessView" customModule="SeaShell" customModuleProvider="target">
+                                <rect key="frame" x="16" y="77" width="168" height="615"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UC-Ym-0K2">
+                                <rect key="frame" x="16" y="28" width="46" height="30"/>
+                                <state key="normal" title="High">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="highButtonPressed:" destination="9er-kU-gl8" eventType="touchUpInside" id="e32-Fc-nX5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrZ-c0-9uh">
+                                <rect key="frame" x="138" y="28" width="46" height="30"/>
+                                <state key="normal" title="Low">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="lowButtonPressed:" destination="9er-kU-gl8" eventType="touchUpInside" id="kai-CF-24A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ0-tb-ruh">
+                                <rect key="frame" x="77" y="30" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="SM">
+                                    <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <action selector="smoothButtonPressed:" destination="9er-kU-gl8" eventType="touchUpInside" id="ItO-RJ-HI4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5UC-Ym-0K2" firstAttribute="top" secondItem="2KL-fc-sdo" secondAttribute="bottom" constant="8" id="AZR-in-idc"/>
+                            <constraint firstItem="DrZ-c0-9uh" firstAttribute="top" secondItem="2KL-fc-sdo" secondAttribute="bottom" constant="8" id="ChM-3r-9hL"/>
+                            <constraint firstItem="DrZ-c0-9uh" firstAttribute="leading" secondItem="daX-sB-M67" secondAttribute="leading" constant="138" id="GdY-Yh-7QS"/>
+                            <constraint firstItem="5UC-Ym-0K2" firstAttribute="leading" secondItem="daX-sB-M67" secondAttribute="leading" constant="16" id="Lma-mT-Y5n"/>
+                            <constraint firstAttribute="trailing" secondItem="Brb-Wq-FJt" secondAttribute="trailing" constant="16" id="OPs-Nc-i9j"/>
+                            <constraint firstItem="FQ0-tb-ruh" firstAttribute="top" secondItem="2KL-fc-sdo" secondAttribute="bottom" constant="10" id="Ovx-yd-eju"/>
+                            <constraint firstItem="Brb-Wq-FJt" firstAttribute="top" secondItem="2KL-fc-sdo" secondAttribute="bottom" constant="57" id="S1g-a8-Psv"/>
+                            <constraint firstItem="Brb-Wq-FJt" firstAttribute="leading" secondItem="daX-sB-M67" secondAttribute="leading" constant="16" id="bOu-pN-6lO"/>
+                            <constraint firstAttribute="trailing" secondItem="5UC-Ym-0K2" secondAttribute="trailing" constant="138" id="gnC-Fz-VuM"/>
+                            <constraint firstAttribute="trailing" secondItem="DrZ-c0-9uh" secondAttribute="trailing" constant="16" id="gsU-wq-T4A"/>
+                            <constraint firstAttribute="trailing" secondItem="FQ0-tb-ruh" secondAttribute="trailing" constant="77" id="q0d-3m-Y7Y"/>
+                            <constraint firstItem="FQ0-tb-ruh" firstAttribute="leading" secondItem="daX-sB-M67" secondAttribute="leading" constant="77" id="uvg-Dd-IL0"/>
+                            <constraint firstItem="RFE-Tg-W4d" firstAttribute="top" secondItem="Brb-Wq-FJt" secondAttribute="bottom" constant="8" id="zsm-DI-xhe"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="200" height="700"/>
+                    <connections>
+                        <outlet property="tView" destination="Brb-Wq-FJt" id="kS4-QX-78e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HfO-2p-7Je" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6794" y="-3365"/>
         </scene>
     </scenes>
     <resources>

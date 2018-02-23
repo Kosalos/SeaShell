@@ -43,19 +43,22 @@ class SliceView: UIView {
 
         // size bars ------
         if shellRouteCount > 1 {
-            let scl:Float = 25
+            let scl:Float = 10
             
             context?.setStrokeColor(UIColor.yellow.cgColor)
             for i in 1 ..< shellRouteCount {
                 let pt = unMapPoint(shellRouteData[i].pos)
                 let prev = unMapPoint(shellRouteData[i-1].pos)
                 let angle = atan2f(Float(pt.y - prev.y),Float(pt.x - prev.x)) + Float.pi/2
+                let sz = (shellRouteData[i].size + 0.1) * scl
+                let ss = CGFloat(sinf(angle) * sz)
+                let cc = CGFloat(cosf(angle) * sz)
                 var p1 = pt
-                p1.x += CGFloat(cosf(angle) * shellRouteData[i].size * scl)
-                p1.y += CGFloat(sinf(angle) * shellRouteData[i].size * scl)
+                p1.x += cc
+                p1.y += ss
                 var p2 = pt
-                p2.x -= CGFloat(cosf(angle) * shellRouteData[i].size * scl)
-                p2.y -= CGFloat(sinf(angle) * shellRouteData[i].size * scl)
+                p2.x -= cc
+                p2.y -= ss
                 
                 context?.move(to:p1)
                 context?.addLine(to: p2)
@@ -74,8 +77,6 @@ class SliceView: UIView {
     }
     
     // MARK: Touch --------------------------
-    let INITIAL_SIZE:Float = 0.1
-    let MAX_SIZE:Float = 1
     let MIN_DISTANCE:Float = 0.2
     
     var sz:Float = 0
@@ -87,14 +88,14 @@ class SliceView: UIView {
         shellRouteData[shellRouteCount].pos = v
 
         if shellRouteCount == 0 {
-            sz = INITIAL_SIZE
+            sz = MIN_THICK
         } else {
             let last = shellRouteData[shellRouteCount-1]
             let distance = hypotf(last.pos.x - v.x, last.pos.y - v.y)
             
             if distance < MIN_DISTANCE {
                 sz *= 1.2
-                if sz > MAX_SIZE { sz = MAX_SIZE }
+                if sz > MAX_THICK { sz = MAX_THICK }
                 return
             }
         }
@@ -103,7 +104,7 @@ class SliceView: UIView {
         shellRouteCount += 1
 
         sz *= 0.9
-        if sz < INITIAL_SIZE { sz = INITIAL_SIZE }
+        if sz < MIN_THICK { sz = MIN_THICK }
      }
      
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -123,5 +124,6 @@ class SliceView: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         seaShell.build(true)
+        vc.crossSectionView.setNeedsDisplay()
     }
 }

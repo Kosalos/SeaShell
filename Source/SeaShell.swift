@@ -1,14 +1,5 @@
 import UIKit
 
-struct iVertex {
-    var x:Int
-    var y:Int
-    var z:Int
-    
-    init() { x = 0; y = 0; z = 0 }
-    init(_ xx:Int, _ yy:Int, _ zz:Int) { x = xx; y = yy; z = zz }
-}
-
 extension Control {
     init() {
         mvp = float4x4()
@@ -31,6 +22,8 @@ let MAX_EX_POINTS:Int = ((MAX_CS_ROUTE*4)+10)   // max points in extrude shape
 let MAX_ROUTE:Int = 250                         // max slices in route
 let MAX_TRI:Int = MAX_EX_POINTS * MAX_ROUTE     // max triangles
 let MAX_INDEX:Int = ((MAX_CS_ROUTE+1) * 2 ) * (MAX_ROUTE-1) + 2 * (MAX_ROUTE-2) + 1
+let MIN_THICK:Float = 0.1                       // range of slice thickness
+let MAX_THICK:Float = 2
 
 struct ShellRouteData {
     var pos = float3()
@@ -92,6 +85,20 @@ class SeaShell {
         build(false)
     }
     
+    func crossSectionSmooth() {
+        if csRouteCount < 2 { return }
+        for i in 1 ..< csRouteCount-1 {
+            let p1 = csRouteData[i  ]
+            let p2 = csRouteData[i-1]
+            let p3 = csRouteData[i+1]
+            
+            csRouteData[i].x = (p1.x * 2.0 + p2.x + p3.x) / 4.0
+            csRouteData[i].y = (p1.y * 2.0 + p2.y + p3.y) / 4.0
+        }
+        
+        vc.crossSectionView.setNeedsDisplay()
+    }
+
     func sizeSmooth() {
         if shellRouteCount == 0 { return }
         for i in 1 ..< shellRouteCount-1 {
@@ -115,7 +122,9 @@ class SeaShell {
     
     func alterThick(_ dir:Int) {
         pThick *= (dir==1) ? 1.09 : 0.91
+        pThick = fClamp(pThick,MIN_THICK,MAX_THICK)
         build(true)
+        vc.crossSectionView.setNeedsDisplay()
     }
     
     func alterZPosition(_ dir:Int) {
@@ -225,9 +234,10 @@ class SeaShell {
             for cIndex in 0 ..< shellRouteCount {
                 // Determine angle from previous circle origin to our origin.
                 // This angle rotates the circle coordinates so shape follows mouse movements.
-                var segmentAngle:Float = 0
-                if cIndex > 1 { segmentAngle = atan2(shellRouteData[cIndex].pos.y - shellRouteData[cIndex-1].pos.y,shellRouteData[cIndex].pos.x - shellRouteData[cIndex-1].pos.x) }
-                
+                let tangentIndex = cIndex == 0 ? 1 : cIndex   // so first extrusion angle matches the others
+                let segmentAngle:Float = atan2(
+                    shellRouteData[tangentIndex].pos.y - shellRouteData[tangentIndex-1].pos.y,
+                    shellRouteData[tangentIndex].pos.x - shellRouteData[tangentIndex-1].pos.x)
                 let saX:Float = sinf(segmentAngle)
                 let saY:Float = -cos(segmentAngle)
                 
@@ -251,7 +261,7 @@ class SeaShell {
             }
         }
         
-        if shellRouteCount > 0 {
+        if csRouteCount > 0 && shellRouteCount > 0 {
             isBuilding = true
             if fullBuild { determineInitialSlice() }
         

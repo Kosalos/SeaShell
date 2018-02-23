@@ -23,6 +23,8 @@
 		1D889B60202E1DB600A2683F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D889B5C202E1DB500A2683F /* HelpViewController.swift */; };
 		1D889B61202E1DB600A2683F /* ArcBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D889B5D202E1DB500A2683F /* ArcBall.swift */; };
 		1D889B65202E1DC000A2683F /* help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D889B64202E1DC000A2683F /* help.txt */; };
+		1DF9B6772040961800F27756 /* ThicknessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9B6762040961800F27756 /* ThicknessView.swift */; };
+		1DF9B6792040986D00F27756 /* ThicknessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9B6782040986D00F27756 /* ThicknessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		1D889B5C202E1DB500A2683F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		1D889B5D202E1DB500A2683F /* ArcBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcBall.swift; sourceTree = "<group>"; };
 		1D889B64202E1DC000A2683F /* help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = help.txt; sourceTree = "<group>"; };
+		1DF9B6762040961800F27756 /* ThicknessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessView.swift; sourceTree = "<group>"; };
+		1DF9B6782040986D00F27756 /* ThicknessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThicknessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +87,13 @@
 				1D889B4F202E1D7A00A2683F /* Main.storyboard */,
 				1D889B52202E1D8D00A2683F /* Renderer.swift */,
 				1D889B3F202E1CD900A2683F /* ViewController.swift */,
+				1DF9B6762040961800F27756 /* ThicknessView.swift */,
 				1D46BBB6203BA7FA0030EE9C /* SliceView.swift */,
 				1D68F05E2038CDBB00902AF7 /* CrossSectionView.swift */,
 				1D889B59202E1D9C00A2683F /* SliderView.swift */,
 				1D889B3D202E1CD900A2683F /* AppDelegate.swift */,
 				1D889B5D202E1DB500A2683F /* ArcBall.swift */,
+				1DF9B6782040986D00F27756 /* ThicknessViewController.swift */,
 				1D889B5C202E1DB500A2683F /* HelpViewController.swift */,
 				1D68F0592038CD9D00902AF7 /* Background.swift */,
 				1D68F0572038CD8E00902AF7 /* AAPLTransforms.swift */,
@@ -175,6 +181,7 @@
 				1D68F0562038CC4900902AF7 /* SeaShell.swift in Sources */,
 				1D68F0582038CD8E00902AF7 /* AAPLTransforms.swift in Sources */,
 				1D889B40202E1CD900A2683F /* ViewController.swift in Sources */,
+				1DF9B6772040961800F27756 /* ThicknessView.swift in Sources */,
 				1D889B55202E1D8D00A2683F /* Renderer.swift in Sources */,
 				1D889B61202E1DB600A2683F /* ArcBall.swift in Sources */,
 				1D889B60202E1DB600A2683F /* HelpViewController.swift in Sources */,
@@ -182,6 +189,7 @@
 				1D889B3E202E1CD900A2683F /* AppDelegate.swift in Sources */,
 				1D46BBB7203BA7FB0030EE9C /* SliceView.swift in Sources */,
 				1D889B57202E1D8D00A2683F /* Shaders.metal in Sources */,
+				1DF9B6792040986D00F27756 /* ThicknessViewController.swift in Sources */,
 				1D889B5B202E1D9C00A2683F /* SliderView.swift in Sources */,
 				1D68F05A2038CD9E00902AF7 /* Background.swift in Sources */,
 			);

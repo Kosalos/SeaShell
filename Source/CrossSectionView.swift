@@ -46,6 +46,17 @@ class CrossSectionView: UIView {
         }
         
         context?.strokePath()
+        
+        // slice profile
+        context?.setStrokeColor(UIColor.lightGray.cgColor)
+
+        for i in 0 ... exShapeCount {
+            var j = i; if j == exShapeCount { j = 0 }
+            let pt = unMapPoint(exShapeData[j])
+            if i == 0 { context?.move(to:pt) } else { context?.addLine(to: pt) }
+        }
+
+        context?.strokePath()
     }
     
     // MARK: Touch --------------------------
@@ -81,7 +92,9 @@ class CrossSectionView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        seaShell.crossSectionSmooth()
         seaShell.build(true)
+        setNeedsDisplay()
     }
 }
 

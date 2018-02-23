@@ -40,6 +40,7 @@ class ViewController: UIViewController{
     @IBOutlet var changeSkinButton: UIButton!
     @IBOutlet var scrollSkinButton: UIButton!
     @IBOutlet var stereoButton: UIButton!
+    @IBOutlet var thicknessButton: UIButton!
     @IBOutlet var helpButton: UIButton!
     @IBOutlet var szMButton: UIButton!
     @IBOutlet var szPButton: UIButton!
@@ -128,6 +129,11 @@ class ViewController: UIViewController{
         rotate(paceRotate.x,paceRotate.y)
     }
     
+    func refresh() {
+        metalViewL.draw()
+        if isStereo { metalViewR.draw() }
+    }
+    
     //MARK:-
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -188,9 +194,10 @@ class ViewController: UIViewController{
         twPButton.frame = CGRect(x:x, y:y, width:w2, height:bys); y += yhop
         x = left
         y = by + yhop * 4 + 10
-        alphaLegend.frame  = CGRect(x:x, y:y, width:60, height:bys); x += 65
-        alphaSlider.frame  = CGRect(x:x, y:y, width:90, height:bys); x += 125
-        stereoButton.frame = CGRect(x:x, y:y, width:70, height:bys); x += 75
+        alphaLegend.frame  = CGRect(x:x, y:y, width:60, height:bys); x += 55
+        alphaSlider.frame  = CGRect(x:x, y:y, width:60, height:bys); x += 85
+        thicknessButton.frame = CGRect(x:x, y:y, width:40, height:bys); x += 50
+        stereoButton.frame = CGRect(x:x, y:y, width:70, height:bys); x += 80
         helpButton.frame   = CGRect(x:x, y:y, width:60, height:bys)
         x += 45
         y = by

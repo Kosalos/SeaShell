@@ -24,5 +24,7 @@ D.  Shell shape drawing area
     Slide your finger to draw the shape of shell.
     Varying the speed of your movement affects the width of the shell.
 
+E.  Launch the Thickness Dialog. Here you specify the shell thickness point by point.
+
 Pinch the viewing windows to control zoom, slide 1 finger to rotate, 2 fingers to translate, tap to stop rotation.
 
