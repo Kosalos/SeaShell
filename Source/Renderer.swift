@@ -81,7 +81,7 @@ class Renderer: NSObject, MTKViewDelegate {
     //MARK: -
     
     var tIndex:Int = 0
-    let tList = [ "texture1","texture2","texture3","texture4","texture5"]
+    let tList = [ "texture1","texture2","texture3","texture4","texture5","texture6","texture7"]
     
     func loadNextTexture() {
         tIndex += 1

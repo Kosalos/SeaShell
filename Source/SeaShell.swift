@@ -1,22 +1,5 @@
 import UIKit
 
-extension Control {
-    init() {
-        mvp = float4x4()
-        light = float3(10,10,0)
-        tCount = 0
-        alpha = 1
-    }
-}
-
-extension TVertex {
-    init(_ p:float3) {
-        pos = p
-        nrm = float3()
-        txt = float2()
-    }
-}
-
 let MAX_CS_ROUTE:Int = 200                      // max cross section route
 let MAX_EX_POINTS:Int = ((MAX_CS_ROUTE*4)+10)   // max points in extrude shape
 let MAX_ROUTE:Int = 250                         // max slices in route
@@ -229,6 +212,30 @@ class SeaShell {
             calcIndices()
         }
         
+        //MARK: -
+        // 'old way' of determining normal was to just use normalize(position)
+        // this 'new way' finds 2 neighboring points and calcs normal of resulting triangle.
+        
+        func determineNormal(_ index:Int) {
+            if exShapeCount == 0 { return }
+            
+            var shapeIndex1 = (index % exShapeCount) + 1  // index offset of neighboring tData point on our circle
+            if shapeIndex1 == exShapeCount { shapeIndex1 = 0 }
+            
+            var shapeIndex2 = (index % exShapeCount) + exShapeCount  // index offset of tData point on circle after us
+            
+            shapeIndex1 += index
+            shapeIndex2 += index
+            if shapeIndex2 >= tCount { return }  // last circle of data uses old style normal calc..
+            
+            let p1 = tData[index].pos
+            let p2 = tData[shapeIndex1].pos - p1
+            let p3 = tData[shapeIndex2].pos - p2
+
+            tData[tCount].nrm = normalize(cross(p2,p3))
+        }
+        
+        //MARK: -
         func extrudeSeashell() {
             tCount = 0
             for cIndex in 0 ..< shellRouteCount {
@@ -261,6 +268,8 @@ class SeaShell {
             }
         }
         
+        for i in 0 ..< tCount { determineNormal(i) }
+        
         if csRouteCount > 0 && shellRouteCount > 0 {
             isBuilding = true
             if fullBuild { determineInitialSlice() }
@@ -277,8 +286,8 @@ class SeaShell {
     func render(_ renderEncoder:MTLRenderCommandEncoder) {
         if isBuilding || tCount == 0 || iCount == 0 || vBuffer == nil { return }
         
-        vBuffer?.contents().copyBytes(from:tData, count:tCount * MemoryLayout<TVertex>.stride)
-        iBuffer?.contents().copyBytes(from:iData, count:iCount * MemoryLayout<UInt16>.stride)
+        vBuffer?.contents().copyMemory(from:tData, byteCount:tCount * MemoryLayout<TVertex>.stride)
+        iBuffer?.contents().copyMemory(from:iData, byteCount:iCount * MemoryLayout<UInt16>.stride)
         
         renderEncoder.setVertexBuffer(vBuffer, offset: 0, index: 0)
         
