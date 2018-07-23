@@ -1,9 +1,15 @@
 SeaShell
 
 Another chance to waste time.
-First you define the cross section of the shell; imagine designing the die for a pasta extruder.
+First you define the cross section of the shell;
+imagine designing the die for a pasta extruder.
 Next you define the shape of the shell.
 Finally you can alter various properties of the shell.
+
+Pinch the viewing windows to control zoom,
+Slide 1 finger to rotate,
+2 fingers to translate,
+Tap to stop rotation.
 
 A.  Button controls
     Shape Smooth.  Smooth out the bend angles of the shell.
@@ -24,7 +30,17 @@ D.  Shell shape drawing area
     Slide your finger to draw the shape of shell.
     Varying the speed of your movement affects the width of the shell.
 
-E.  Launch the Thickness Dialog. Here you specify the shell thickness point by point.
+E.  Launch the Thickness Dialog. Here you specify the
+    shell thickness point by point.
+    Use your finger to draw the thickness profile on the drawing area.
+    The "SM" button will smooth out the profile,
+    while "Low", and "High" reset all the profile to one setting.
 
-Pinch the viewing windows to control zoom, slide 1 finger to rotate, 2 fingers to translate, tap to stop rotation.
+    "Stereo"
+    Toggle stereo mode on/off.
+    Image is rendered twice, for 'cross-eyed' 3D viewing.
+    With the iPad held two feet away, slightly cross your eyes so
+    that there is a third image in the middle.
+    Relax your gaze, and concentrate only on that middle image, which is in 3D.
+
 

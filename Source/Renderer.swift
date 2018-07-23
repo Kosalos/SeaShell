@@ -50,7 +50,7 @@ class Renderer: NSObject, MTKViewDelegate {
         } catch {  print("Unable to compile render pipeline state.  Error info: \(error)"); exit(0) }
         
         let depthStateDesciptor = MTLDepthStencilDescriptor()
-        depthStateDesciptor.depthCompareFunction = MTLCompareFunction.less
+        depthStateDesciptor.depthCompareFunction = MTLCompareFunction.always // less
         depthStateDesciptor.isDepthWriteEnabled = true
         depthState = gDevice.makeDepthStencilState(descriptor:depthStateDesciptor)!
         

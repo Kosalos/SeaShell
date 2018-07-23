@@ -10,7 +10,7 @@ var seaShell = SeaShell()
 
 // used during development of rotated() layout routine to simulate other iPad sizes
 //let scrnSz:[CGPoint] = [ CGPoint(x:768,y:1024), CGPoint(x:834,y:1112), CGPoint(x:1024,y:1366) ] // portrait 9.7, 10.5, 12.9" iPads
-//let scrnIndex = 1
+//let scrnIndex = 0
 //let scrnLandscape:Bool = true
 
 class ViewController: UIViewController{
@@ -146,21 +146,20 @@ class ViewController: UIViewController{
     @objc func screenRotated() {
         let xs:CGFloat = view.bounds.width
         let ys:CGFloat = view.bounds.height
-        //let xs = scrnLandscape ? scrnSz[scrnIndex].y : scrnSz[scrnIndex].x
-        //let ys = scrnLandscape ? scrnSz[scrnIndex].x : scrnSz[scrnIndex].y
+//        let xs = scrnLandscape ? scrnSz[scrnIndex].y : scrnSz[scrnIndex].x
+//        let ys = scrnLandscape ? scrnSz[scrnIndex].x : scrnSz[scrnIndex].y
 
         let fullWidth:CGFloat = 760
-        let fullHeight:CGFloat = 240
+        let fullHeight:CGFloat = 240 //240
         let left:CGFloat = (xs - fullWidth)/2
         let bys:CGFloat = 35    // button height
 
         var ixs = (xs - 4) / 2
         if ixs + fullHeight > ys { ixs = ys - fullHeight - 4 }
-        var iys = ys - fullHeight
+        let iys = ys - fullHeight
 
         if isStereo {
             let ixs = xs/2 - 1
-            if iys > ixs { iys = ixs }
             metalViewL.frame = CGRect(x:0, y:0, width:ixs, height:iys)
             metalViewR.frame = CGRect(x:xs/2 + 1, y:0, width:ixs, height:iys)
         }
