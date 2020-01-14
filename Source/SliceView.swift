@@ -7,15 +7,15 @@ class SliceView: UIView {
     var scale:Float = 0
     var xc:CGFloat = 0
 
-    func mapPoint(_ pt:CGPoint) -> float3 {
-        var v = float3()
+    func mapPoint(_ pt:CGPoint) -> simd_float3 {
+        var v = simd_float3()
         v.x = Float(pt.x) * scale - viewSize/2 // centered on origin
         v.y = Float(pt.y) * scale - viewSize/2
         v.z = 0
         return v
     }
     
-    func unMapPoint(_ p:float3) -> CGPoint {
+    func unMapPoint(_ p:simd_float3) -> CGPoint {
         var v = CGPoint()
         v.x = xc + CGFloat(p.x / scale)
         v.y = xc + CGFloat(p.y / scale)
@@ -26,6 +26,7 @@ class SliceView: UIView {
         if scale == 0 {
             scale = viewSize / Float(bounds.width)
             xc = bounds.width / 2
+            if scale == 0 { return }
         }
         
         let context = UIGraphicsGetCurrentContext()

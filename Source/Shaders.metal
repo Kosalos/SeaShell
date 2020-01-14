@@ -13,15 +13,15 @@ struct Transfer {
 
 vertex Transfer texturedVertexShader
 (
- device TVertex* vData [[ buffer(0) ]],
+ constant TVertex* vData [[ buffer(0) ]],
  constant Control& control [[ buffer(1) ]],
  unsigned int vid [[ vertex_id ]])
 {
     Transfer out;
     TVertex v = vData[vid];
     
-    out.txt = v.txt;
-    out.position = control.mvp * float4(v.pos, 1.0);
+    out.txt = v.txt.xy;
+    out.position = control.mvp * float4(v.pos.xyz, 1.0);
     
     float intensity = 0.2 + saturate(dot(vData[vid].nrm.rgb, control.light));
     out.lighting = float4(intensity,intensity,intensity,1);

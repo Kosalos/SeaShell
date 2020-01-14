@@ -1,5 +1,7 @@
 Seashell designer
 
+Jan 14, 2020:  Updated to XCode 11.3.1,  Swift 5
+
 For newer iPads.
 
 Another chance to waste time.

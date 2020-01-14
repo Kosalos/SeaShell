@@ -4,14 +4,14 @@
 #include <simd/base.h>
 
 struct TVertex {
-    vector_float3 pos;
-    vector_float3 nrm;
-    vector_float2 txt;
+    simd_float3 pos;
+    simd_float3 nrm;
+    simd_float2 txt;
 };
 
 struct Control {
     matrix_float4x4 mvp;
-    vector_float3 light;
+    simd_float3 light;
     float alpha;
     int tCount;
 };

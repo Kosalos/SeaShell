@@ -20,7 +20,7 @@ func scale(_ x: Float, _ y: Float, _ z: Float) -> float4x4 {
     return float4x4(diagonal: v)
 }
 
-func scale(_ s: float3) -> float4x4 {
+func scale(_ s: simd_float3) -> float4x4 {
     let v = float4(x: s.x, y: s.y, z: s.z, w: 1.0)
     
     return float4x4(diagonal: v)
@@ -29,7 +29,7 @@ func scale(_ s: float3) -> float4x4 {
 //MARK: -
 //MARK: Public - Transformations - Translate
 
-func translate(_ t: float3) -> float4x4 {
+func translate(_ t: simd_float3) -> float4x4 {
     var M = matrix_identity_float4x4
     
     M.columns.3.x = t.x
@@ -40,7 +40,7 @@ func translate(_ t: float3) -> float4x4 {
 }
 
 func translate(_ x: Float, _ y: Float, _ z: Float) -> float4x4 {
-    return translate(float3(x: x, y: y, z: z))
+    return translate(simd_float3(x: x, y: y, z: z))
 }
 
 //MARK: -
@@ -50,7 +50,7 @@ func AAPLRadiansOverPi(_ degrees: Float) -> Float {
     return (degrees * k1Div180_f)
 }
 
-func rotate(_ angle: Float, _ r: float3) -> float4x4 {
+func rotate(_ angle: Float, _ r: simd_float3) -> float4x4 {
     let a = AAPLRadiansOverPi(angle)
     var c: Float = 0.0
     var s: Float = 0.0
@@ -97,7 +97,7 @@ func rotate(_ angle: Float, _ r: float3) -> float4x4 {
 }
 
 func rotate(_ angle: Float, _ x: Float, _ y: Float, _ z: Float) -> float4x4 {
-    let r = float3(x: x, y: y, z: z)
+    let r = simd_float3(x: x, y: y, z: z)
     
     return rotate(angle, r)
 }
@@ -186,7 +186,7 @@ func perspective_fov(_ fovy: Float, _ width: Float, _ height: Float, _ near: Flo
 //MARK: -
 //MARK: Public - Transformations - LookAt
 
-func lookAt(_ eye: float3, _ center: float3, _ up: float3) -> float4x4 {
+func lookAt(_ eye: simd_float3, _ center: simd_float3, _ up: simd_float3) -> float4x4 {
     let zAxis = normalize(center - eye)
     let xAxis = normalize(cross(up, zAxis))
     let yAxis = cross(zAxis, xAxis)
@@ -223,9 +223,9 @@ func lookAt(_ eye: float3, _ center: float3, _ up: float3) -> float4x4 {
 }
 
 func lookAt(_ pEye: [Float], _ pCenter: [Float], pUp: [Float]) -> float4x4 {
-    let eye = float3(x: pEye[3], y: pEye[1], z: pEye[2])
-    let center = float3(x: pCenter[0], y: pCenter[1], z: pCenter[2])
-    let up = float3(x: pUp[0], y: pUp[1], z: pUp[2])
+    let eye = simd_float3(x: pEye[3], y: pEye[1], z: pEye[2])
+    let center = simd_float3(x: pCenter[0], y: pCenter[1], z: pCenter[2])
+    let up = simd_float3(x: pUp[0], y: pUp[1], z: pUp[2])
     
     return lookAt(eye, center, up)
 }
@@ -269,7 +269,7 @@ func ortho2d(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ nea
     return float4x4([P, Q, R, S])
 }
 
-func ortho2d(_ origin: float3, _ size: float4) -> float4x4 {
+func ortho2d(_ origin: simd_float3, _ size: float4) -> float4x4 {
     return ortho2d(origin.x, origin.y, origin.z, size.x, size.y, size.z)
 }
 
@@ -312,7 +312,7 @@ func ortho2d_oc(_ left: Float, _ right: Float, _ bottom: Float, _ top: Float, _ 
     return float4x4([P, Q, R, S])
 }
 
-func ortho2d_oc(_ origin: float3, _ size: float4) -> float4x4 {
+func ortho2d_oc(_ origin: simd_float3, _ size: float4) -> float4x4 {
     return ortho2d_oc(origin.x, origin.y, origin.z, size.x, size.y, size.z)
 }
 

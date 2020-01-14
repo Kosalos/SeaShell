@@ -16,9 +16,9 @@ var constantsSize: Int = MemoryLayout<Control>.stride
 var constantsIndex: Int = 0
 let kInFlightCommandBuffers = 3
 
-var translation = float3(0,0,8)
+var translation = simd_float3(0,0,8)
 
-var lightpos = float3()
+var lightpos = simd_float3()
 var lAngle = Float()
 
 class Renderer: NSObject, MTKViewDelegate {
@@ -50,7 +50,7 @@ class Renderer: NSObject, MTKViewDelegate {
         } catch {  print("Unable to compile render pipeline state.  Error info: \(error)"); exit(0) }
         
         let depthStateDesciptor = MTLDepthStencilDescriptor()
-        depthStateDesciptor.depthCompareFunction = MTLCompareFunction.always // less
+        depthStateDesciptor.depthCompareFunction = MTLCompareFunction.less
         depthStateDesciptor.isDepthWriteEnabled = true
         depthState = gDevice.makeDepthStencilState(descriptor:depthStateDesciptor)!
         
@@ -98,17 +98,25 @@ class Renderer: NSObject, MTKViewDelegate {
         mtlVertexDescriptor.attributes[0].offset = 0
         mtlVertexDescriptor.attributes[0].bufferIndex = 0
         
-        mtlVertexDescriptor.attributes[1].format = MTLVertexFormat.float2
+        mtlVertexDescriptor.attributes[1].format = MTLVertexFormat.float3
         mtlVertexDescriptor.attributes[1].offset = 0
         mtlVertexDescriptor.attributes[1].bufferIndex = 1
+
+        mtlVertexDescriptor.attributes[2].format = MTLVertexFormat.float2
+        mtlVertexDescriptor.attributes[2].offset = 0
+        mtlVertexDescriptor.attributes[2].bufferIndex = 2
         
         mtlVertexDescriptor.layouts[0].stride = 12
         mtlVertexDescriptor.layouts[0].stepRate = 1
         mtlVertexDescriptor.layouts[0].stepFunction = MTLVertexStepFunction.perVertex
         
-        mtlVertexDescriptor.layouts[1].stride = 8
+        mtlVertexDescriptor.layouts[1].stride = 12
         mtlVertexDescriptor.layouts[1].stepRate = 1
         mtlVertexDescriptor.layouts[1].stepFunction = MTLVertexStepFunction.perVertex
+
+        mtlVertexDescriptor.layouts[2].stride = 8
+        mtlVertexDescriptor.layouts[2].stepRate = 1
+        mtlVertexDescriptor.layouts[2].stepFunction = MTLVertexStepFunction.perVertex
         
         return mtlVertexDescriptor
     }
@@ -162,7 +170,7 @@ class Renderer: NSObject, MTKViewDelegate {
         
         let renderPassDescriptor = view.currentRenderPassDescriptor
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor!)
-        renderEncoder?.setCullMode(.none)
+        renderEncoder?.setCullMode(.back) // zorro   .none)
         renderEncoder?.setFrontFacing(.clockwise)
         renderEncoder?.setRenderPipelineState(pipelineState)
         renderEncoder?.setDepthStencilState(depthState)
@@ -177,12 +185,12 @@ class Renderer: NSObject, MTKViewDelegate {
         constant_buffer[0].mvp =
             projectionMatrix
             * translate(translation.x,translation.y,translation.z)
-            * rotate(stereoAngle,float3(0,1,0))
+            * rotate(stereoAngle,simd_float3(0,1,0))
             * arcBall.transformMatrix
         
-        lightpos.x = sinf(lAngle) * 10
+        lightpos.x = sinf(lAngle) * 5
         lightpos.y = 5
-        lightpos.z = cosf(lAngle) * 10
+        lightpos.z = cosf(lAngle) * 5
         lAngle += 0.005
         constant_buffer[0].light = normalize(lightpos)
         constant_buffer[0].alpha = vc.alpha
@@ -206,4 +214,5 @@ class Renderer: NSObject, MTKViewDelegate {
         projectionMatrix = perspective_fov(kFOVY, aspect, 0.1, 300.0)
     }
 }
+
 

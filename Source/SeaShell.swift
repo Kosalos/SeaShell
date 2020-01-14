@@ -9,17 +9,17 @@ let MIN_THICK:Float = 0.1                       // range of slice thickness
 let MAX_THICK:Float = 2
 
 struct ShellRouteData {
-    var pos = float3()
+    var pos = simd_float3()
     var size = Float()
 }
 
-var csRouteData = Array(repeating:float3(), count:MAX_CS_ROUTE)
+var csRouteData = Array(repeating:simd_float3(), count:MAX_CS_ROUTE)
 var csRouteCount:Int = 0
 
 var shellRouteData = Array(repeating:ShellRouteData(), count:MAX_ROUTE)
 var shellRouteCount:Int = 0
 
-var exShapeData = Array(repeating:float3(), count:MAX_EX_POINTS)  // extrude shape points
+var exShapeData = Array(repeating:simd_float3(), count:MAX_EX_POINTS)  // extrude shape points
 var exShapeCount:Int = 0
 
 //MARK: -
@@ -139,7 +139,11 @@ class SeaShell {
         if exShapeCount == 0 { return }
         iCount = 0
         
-        func addEntry(_ v:Int) {  iData[iCount] = UInt16(v);  iCount += 1  }
+        func addEntry(_ v:Int) {
+            iData[iCount] = UInt16(v);
+            iCount += 1
+            if iCount >= MAX_INDEX { print("overflow iData"); exit(0) }
+        }
 
         for c in 0 ..< shellRouteCount-1 {
             addEntry(exShapeCount * (c+1))
@@ -166,7 +170,7 @@ class SeaShell {
         // determine circle of points that surround the line
         func determineInitialSlice() {
             var a2:Float = 0
-            var p1 = float3()
+            var p1 = simd_float3()
             
             // calculate angle from each point to the previous one
             var tan = Array(repeating:Float(), count:MAX_CS_ROUTE)
@@ -176,7 +180,7 @@ class SeaShell {
             }
             tan[0] = tan[1]
             
-            func addExtrudeShapeEntry(_ v:float3) { exShapeData[exShapeCount] = v;  exShapeCount += 1  }
+            func addExtrudeShapeEntry(_ v:simd_float3) { exShapeData[exShapeCount] = v;  exShapeCount += 1  }
             
             exShapeCount = 0
             addExtrudeShapeEntry(csRouteData[0])
@@ -219,25 +223,26 @@ class SeaShell {
         func determineNormal(_ index:Int) {
             if exShapeCount == 0 { return }
             
-            var shapeIndex1 = (index % exShapeCount) + 1  // index offset of neighboring tData point on our circle
+            var shapeIndex1 = (index % exShapeCount) + 1  // index of neighboring point on our circle
             if shapeIndex1 == exShapeCount { shapeIndex1 = 0 }
             
-            var shapeIndex2 = (index % exShapeCount) + exShapeCount  // index offset of tData point on circle after us
-            
-            shapeIndex1 += index
-            shapeIndex2 += index
-            if shapeIndex2 >= tCount { return }  // last circle of data uses old style normal calc..
-            
+            let shapeIndex2 = shapeIndex1 + exShapeCount  // index of point on circle after us
+            if shapeIndex2 >= tCount { // last circle of data uses old style normal calc..
+                tData[index].nrm = normalize(tData[index].pos)
+                return
+            }
+
             let p1 = tData[index].pos
             let p2 = tData[shapeIndex1].pos - p1
-            let p3 = tData[shapeIndex2].pos - p2
+            let p3 = tData[shapeIndex2].pos - p1
 
-            tData[tCount].nrm = normalize(cross(p2,p3))
+            tData[index].nrm = normalize(cross(p2,p3))
         }
         
         //MARK: -
         func extrudeSeashell() {
             tCount = 0
+            
             for cIndex in 0 ..< shellRouteCount {
                 // Determine angle from previous circle origin to our origin.
                 // This angle rotates the circle coordinates so shape follows mouse movements.
@@ -260,15 +265,12 @@ class SeaShell {
                     tData[tCount].pos.x = shellRouteData[cIndex].pos.x + tx * shellRouteData[cIndex].size * saX
                     tData[tCount].pos.y = -(shellRouteData[cIndex].pos.y + tx * shellRouteData[cIndex].size * saY)
                     tData[tCount].pos.z = shellRouteData[cIndex].pos.z + ty * shellRouteData[cIndex].size + pZaxis * Float(cIndex)
-                    tData[tCount].nrm   = normalize(tData[tCount].pos)
-                    tData[tCount].txt.x = tData[tCount].nrm.x
-                    tData[tCount].txt.y = tData[tCount].nrm.y
+
                     tCount += 1
+                    if tCount >= MAX_TRI { print("overflow tData"); exit(0) }
                 }
             }
         }
-        
-        for i in 0 ..< tCount { determineNormal(i) }
         
         if csRouteCount > 0 && shellRouteCount > 0 {
             isBuilding = true
@@ -279,13 +281,21 @@ class SeaShell {
             }
             isBuilding = false
         }
+
+        for i in 0 ..< tCount {
+            determineNormal(i)
+
+            let n:simd_float3 = tData[i].nrm
+            tData[i].txt.x = n.x
+            tData[i].txt.y = n.y
+        }
     }
 
     //MARK: -
     
     func render(_ renderEncoder:MTLRenderCommandEncoder) {
         if isBuilding || tCount == 0 || iCount == 0 || vBuffer == nil { return }
-        
+
         vBuffer?.contents().copyMemory(from:tData, byteCount:tCount * MemoryLayout<TVertex>.stride)
         iBuffer?.contents().copyMemory(from:iData, byteCount:iCount * MemoryLayout<UInt16>.stride)
         

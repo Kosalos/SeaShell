@@ -26,7 +26,9 @@ class ThicknessView: UIView {
     
     override func draw(_ rect: CGRect) {
         if xScale == 0 {
-            xScale = (Float(bounds.width) - xMargin * 2) / MAX_THICK }
+            xScale = (Float(bounds.width) - xMargin * 2) / MAX_THICK
+            if xScale == 0  { return }
+        }
 
         let context = UIGraphicsGetCurrentContext()
         
@@ -41,7 +43,7 @@ class ThicknessView: UIView {
         
         if shellRouteCount == 0 { return }
         yScale = Float(bounds.height) / Float(shellRouteCount)
-
+        
         context?.setLineWidth(2)
         context?.setStrokeColor(UIColor.yellow.cgColor)
         
